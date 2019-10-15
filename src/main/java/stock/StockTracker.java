@@ -22,6 +22,12 @@ public class StockTracker {
 
         ArrayList<StockEntry> entriesFound = new ArrayList<>();
 
+        for (StockEntry stockEntry : stockList) {
+            if (stockEntryPredicate.test(stockEntry)) {
+                entriesFound.add(stockEntry);
+            }
+        }
+
         return entriesFound;
     }
 
@@ -33,6 +39,12 @@ public class StockTracker {
      */
     public int getStockLevel(Predicate<StockEntry> stockEntryPredicate ) {
         int stockLevel = 0;
+
+        for (StockEntry a : stockList) {
+            if (stockEntryPredicate.test(a)) {
+                stockLevel += a.getQty();
+            }
+        }
         //
         return stockLevel;
     }
@@ -40,6 +52,9 @@ public class StockTracker {
     public int getStockLevel() {
         int stockLevel = 0;
         //
+        for (StockEntry a: stockList) {
+            stockLevel += a.getQty();
+        }
         return stockLevel;
     }
 
